@@ -1,31 +1,30 @@
 const quotebtn = document.querySelector(".quotes-btn");
 const quote = document.querySelector(".quotes");
-const authorp  = document.querySelector(".author");
+const authorp = document.querySelector(".author");
 
-const API_URL = "https://api.freeapi.app/api/v1/public/quotes/quote/random";
+const API_URL = "https://motivational-quotes-api-7dbg.onrender.com/api/quotes/random";
 
-async function getquote(){
+async function getquote() {
     quote.textContent = "Loading...";
     authorp.textContent = "";
 
-    try{
+    try {
         const response = await fetch(API_URL);
         const data = await response.json();
 
-        // Prefer the API's content field at data.data.content
-        const text = data.data.content;
-        const author = data.data.author;
+        // Using the direct quote and author fields from JSON
+        const text = data.quote;
+        const author = data.author || "Unknown";
 
         quote.textContent = `"${text}"`;
         authorp.textContent = "Author - " + author;
-        
-    } catch(error){
+
+    } catch (error) {
         console.error(error);
         quote.innerText = "Failed to load quote.";
     }
 }
 
-// wire up button and request one on load
-quotebtn?.addEventListener("click", getquote);btn?.addEventListener("click", getquote);
+// Fix the duplicate event listener and cleanup
+quotebtn?.addEventListener("click", getquote);
 getquote();
-// document.addEventListener("DOMContentLoaded", getquote);
