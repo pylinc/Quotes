@@ -70,6 +70,4 @@ quotes/
 
 Feel free to submit issues and enhancement requests.
 
-## License
 
-[Your chosen license]
