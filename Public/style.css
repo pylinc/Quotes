@@ -11,6 +11,7 @@ body {
   height: 100vh;
   background: linear-gradient(135deg, var(--darkreader-background-e0f7f4, #0f4d48) 0%, var(--darkreader-background-eef2ff, #232627) 50%, var(--darkreader-background-f7f9ff, #1e2124) 100%);
   margin: 0;
+  margin: 0;
 }
 
 h1{
