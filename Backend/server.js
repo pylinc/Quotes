@@ -19,7 +19,7 @@ app.use('/',(req,res)=>{
 const dbConnect = require('./config/database');
 dbConnect();
 
-const scheduleDailyQuotes = require('./Scheduler/dailQuotes');
+const scheduleDailyQuotes = require('./Schedular/dailQuotes');
 
 scheduleDailyQuotes();
 
