@@ -1,3 +1,5 @@
+const quotesdata = require('../model/quotesdata');
+
 exports.getQuotes = async (req,res)=>{
 
     try{
@@ -12,9 +14,9 @@ exports.getQuotes = async (req,res)=>{
         const randomIndex = Math.floor(Math.random() * quotes.length);
         const quote = quotes[randomIndex];
 
-        return res.json({
-            quote: quote.quote,
-            author: quote.author || "Unknown"
+        res.json({
+            quote: quote?.quote || "No Quote Found",
+            author: quote?.author || "Unknown"
         });
 
     }catch(error){
