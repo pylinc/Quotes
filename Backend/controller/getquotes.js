@@ -1,29 +1,24 @@
-const quotesdata = require('../model/quotesdata');
-
 exports.getQuotes = async (req,res)=>{
 
     try{
-
         const quotes = await quotesdata.find();
     
         if(!quotes.length){
             return res.status(404).json({
-                success:false,
-                message:"No Quotes in the Databse"
+                message:"No Quotes in the Database"
             });
         }
-        // console.log(quotes);
+
         const randomIndex = Math.floor(Math.random() * quotes.length);
         const quote = quotes[randomIndex];
-        console.log(quote);
-        res.json({
-            success:true,
-            message:quote.quote,
-            author:quote.author
+
+        return res.json({
+            quote: quote.quote,
+            author: quote.author || "Unknown"
         });
+
     }catch(error){
-        res.status(500).json({
-            success:false,
+        return res.status(500).json({
             message:"Server Error"
         });
     }

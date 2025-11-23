@@ -6,7 +6,7 @@ const {sendMail} = require('../utils/mailer');
 
 function scheduleDailyQuotes() {
     cron.schedule(
-        "20 21 * * *",
+        "20 0 * * *",
         async() =>{
             console.log("Daily Quote Scheduler Triggered: ",new Date().toLocaleString());
 

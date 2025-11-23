@@ -2,7 +2,7 @@ const quotebtn = document.querySelector(".quotes-btn");
 const quote = document.querySelector(".quotes");
 const authorp = document.querySelector(".author");
 
-const API_URL = "https://motivational-quotes-api-7dbg.onrender.com/api/quotes/random";
+const API_URL = "https://quotes-j63e.onrender.com/api/v1/getquote";
 
 async function getquote() {
     quote.textContent = "Loading...";
@@ -13,7 +13,7 @@ async function getquote() {
         const data = await response.json();
 
         // Using the direct quote and author fields from JSON
-        const text = data.quote;
+        const text = data.message;
         const author = data.author || "Unknown";
 
         quote.textContent = `"${text}"`;
