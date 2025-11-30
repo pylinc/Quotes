@@ -13,11 +13,13 @@ exports.getQuotes = async (req,res)=>{
 
         const randomIndex = Math.floor(Math.random() * quotes.length);
         const quote = quotes[randomIndex];
+        console.log(quote);
 
         res.json({
-            quote: quote?.quote || "No Quote Found",
-            author: quote?.author || "Unknown"
-        });
+    quote: quote.quote || "No quote field found!",
+    author: quote.author || "Unknown"
+});
+
 
     }catch(error){
         return res.status(500).json({

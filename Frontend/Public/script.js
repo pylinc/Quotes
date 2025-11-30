@@ -2,7 +2,8 @@ const quotebtn = document.querySelector(".quotes-btn");
 const quote = document.querySelector(".quotes");
 const authorp = document.querySelector(".author");
 
-const API_URL = "https://quotes-j63e.onrender.com/api/v1/getquote";
+// Use relative URL for API - will work on same domain
+const API_URL = "/api/v1/getquote";
 
 async function getquote() {
     quote.textContent = "Loading...";

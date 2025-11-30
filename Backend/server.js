@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require("cors");
+const path = require('path');
 app.use(cors());
 
 
@@ -9,15 +10,19 @@ const quotesroute = require('./routes/route');
 app.use(express.json());
 const port = process.env.PORT || 2000;
 
+// Serve static files from Frontend/Public directory
+app.use(express.static(path.join(__dirname, '../Frontend/Public')));
+
+app.use("/api/v1",quotesroute);
+
+// Serve index.html for root route
+app.get('/',(req,res)=>{
+    res.sendFile(path.join(__dirname, '../Frontend/Public/index.html'));
+});
+
 app.listen(port,()=>{
     console.log("Server is running on port:",port);
 })
-
-app.use("/api/v1",quotesroute);
-app.use('/',(req,res)=>{
-    // res.send('index.html');
-    res.send("<h1>This is home page</h1>");
-});
 
 const dbConnect = require('./config/database');
 dbConnect();
