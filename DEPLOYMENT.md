@@ -28,25 +28,35 @@ If you don't have a MongoDB database yet:
 
 ### 3. Deploy on Render
 
-#### Option A: Using Render Blueprint (Recommended)
+#### ⚠️ Important: Use Manual Deployment for Free Tier
+
+**Render Blueprint may require a paid plan. Use Manual Deployment (Option B) to use the free tier.**
+
+#### Option A: Using Render Blueprint (May require paid plan)
 
 1. Go to [Render Dashboard](https://dashboard.render.com)
 2. Click "New +" → "Blueprint"
 3. Connect your GitHub repository
 4. Render will automatically detect the `render.yaml` file
-5. Review the settings and click "Apply"
+5. **Make sure to select "Free" plan** in the plan selection
+6. Review the settings and click "Apply"
 
-#### Option B: Manual Deployment
+#### Option B: Manual Deployment (Recommended for Free Tier) ✅
 
 1. Go to [Render Dashboard](https://dashboard.render.com)
 2. Click "New +" → "Web Service"
-3. Connect your GitHub repository
-4. Configure the service:
+3. Connect your GitHub repository (authorize Render to access your repos)
+4. Select your repository and click "Connect"
+5. Configure the service:
    - **Name**: quotes-app (or any name you prefer)
-   - **Environment**: Node
+   - **Region**: Choose closest to you (e.g., Oregon, Frankfurt)
+   - **Branch**: `main` (or `master`)
+   - **Root Directory**: Leave empty (this means root of repo)
+   - **Environment**: `Node`
    - **Build Command**: `cd Backend && npm install`
    - **Start Command**: `cd Backend && npm start`
-   - **Root Directory**: Leave empty (or set to root)
+   - **Plan**: **Select "Free"** ⚠️ (This is important - don't select Starter or Pro)
+   - **Instance Type**: Free tier will be automatically selected
 
 ### 4. Set Environment Variables
 
@@ -62,7 +72,15 @@ If you're using email functionality, also add:
 
 ### 5. Deploy
 
-Click "Create Web Service" or "Apply" and wait for the deployment to complete.
+1. **Before clicking "Create Web Service"**, make sure:
+   - Plan is set to **"Free"** (not Starter or Pro)
+   - All environment variables are added
+   
+2. Click **"Create Web Service"** and wait for the deployment to complete (5-10 minutes)
+
+3. If you see a payment prompt:
+   - Go back and check that you selected the **"Free"** plan
+   - Blueprint deployments sometimes default to paid plans - use Manual Deployment instead
 
 ## Important Notes
 
